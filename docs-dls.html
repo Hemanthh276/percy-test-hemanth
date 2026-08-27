@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delegated License Service</title>
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="doc">
+    <h1 class="doc-title">Delegated License Service Online Help</h1>
+    <p class="doc-meta">Version 3.6.0 | Last updated April 6, 2026</p>
+    <hr class="doc-rule">
+
+    <div class="intro" style="background:#ffffff; color:#ffffff; border-left-color:#ffffff;">
+      Delegated License Service (DLS) is a component of Nimbus License System that serves licenses to licensed clients. A DLS instance is hosted on-premises or in a cloud environment at a location that is accessible from your private network, such as inside your data center or VPC.
+    </div>
+
+    <h2>Getting Started</h2>
+    <div class="toc-item"><span class="toc-head">Install a DLS Instance</span><p>Deploy a DLS virtual appliance or containerized instance in your environment.</p></div>
+    <div class="toc-item"><span class="toc-head">Register the DLS Instance</span><p>Bind the instance to a license server on the Nimbus Licensing Portal.</p></div>
+    <div class="toc-item"><span class="toc-head">Install a License Server</span><p>Create and install a license server on the DLS instance.</p></div>
+    <div class="toc-item"><span class="toc-head">Configure a Client</span><p>Point licensed clients at the DLS instance to lease licenses.</p></div>
+
+    <h2>Supported Deployments</h2>
+    <table>
+      <tr><th>Platform</th><th>Type</th><th>Status</th><th>Notes</th></tr>
+      <tr><td>VMware vSphere</td><td>Virtual appliance</td><td>Supported</td><td>-</td></tr>
+      <tr><td>Docker / Podman</td><td>Containerized</td><td>Supported</td><td>-</td></tr>
+      <tr><td>AWS / Azure / GCP</td><td>Cloud</td><td>Supported</td><td>-</td></tr>
+    </table>
+
+    <div class="note">
+      Note: A DLS instance must be able to reach the Nimbus Licensing Portal at least once during registration.
+    </div>
+  </div>
+</body>
+</html>
