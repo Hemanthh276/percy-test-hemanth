@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visual Testing - Series Boxes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 200px 40px 40px 40px; /* increased top padding */
+      background-color: #f4f4f4;
+    }
+
+    .random-image {
+      width: 300px;
+      height: 200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .box {
+      width: 200px;
+      height: 180px;
+      padding: 20px;
+      color: black;
+      background-color: white;
+      font-size: 24px;
+      font-weight: bold;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* .box1 { background-color: #7f10ef; }  Purple */
+    /* .box2 { background-color: #24e10b; }  Green */
+    /* .box3 { background-color: #48e70e; }  Light Green */
+    /* .box4 { background-color: #e91e63; }  Pink */
+    /* .box5 { background-color: #ff9800; }  Orange */
+    /* .box6 { background-color: #3f51b5; }  Blue */
+    /* .box7 { background-color: #2196f3; }  Blue */
+    /* .box8 { background-color: #ee0c1b; }  Red */
+  </style>
+</head>
+<body>
+  <img src="https://picsum.photos/300/200" alt="Random Image" class="random-image" />
+  <div class="box box1" id="box1"></div>
+  <div class="box box2" id="box2"></div>
+  <div class="box box3" id="box3"></div>
+  <div class="box box4" id="box4"></div>
+  <div class="box box5" id="box5"></div>
+  <div class="box box6" id="box6"></div>
+  <div class="box box7" id="box7"></div>
+  <div class="box box8" id="box8"></div>
+
+  <script>
+    // Arrays of random meaningful names and words
+    const names = [
+      "Alexander", "Sophia", "Benjamin", "Isabella", "Christopher", "Emma", 
+      "Nicholas", "Olivia", "Jonathan", "Ava", "Matthew", "Charlotte",
+      "Daniel", "Amelia", "Michael", "Harper", "William", "Evelyn"
+    ];
+
+    const adjectives = [
+      "Amazing", "Brilliant", "Creative", "Dynamic", "Elegant", "Fantastic",
+      "Gorgeous", "Incredible", "Joyful", "Magnificent", "Outstanding", "Perfect",
+      "Radiant", "Spectacular", "Wonderful", "Extraordinary", "Marvelous", "Stunning"
+    ];
+
+    const nouns = [
+      "Adventure", "Journey", "Dream", "Vision", "Explorer", "Creator",
+      "Artist", "Scholar", "Pioneer", "Champion", "Leader", "Innovator",
+      "Genius", "Master", "Hero", "Legend", "Star", "Wonder"
+    ];
+
+    const tvShows = [
+      "Game of Thrones", "Breaking Bad", "Stranger Things", "The Office",
+      "Friends", "The Crown", "Sherlock", "Lost", "Westworld", "The Mandalorian",
+      "House of Cards", "Better Call Saul", "Black Mirror", "Ozark", "Succession"
+    ];
+
+    const movies = [
+      "Inception", "Interstellar", "The Matrix", "Pulp Fiction", "The Godfather",
+      "Forrest Gump", "Titanic", "Avatar", "Gladiator", "The Lion King",
+      "Star Wars", "Lord of the Rings", "Harry Potter", "Marvel Avengers", "Batman"
+    ];
+
+    const randomNumbers = [
+      "12345", "67890", "98765", "24680", "13579", "11111", "22222", "33333",
+      "555555", "777777", "999999", "123456789", "987654321", "456789123"
+    ];
+
+    function getRandomElement(array) {
+      return array[Math.floor(Math.random() * array.length)];
+    }
+
+    function generateRandomContent() {
+      const contentTypes = [
+        () => getRandomElement(names),
+        () => `${getRandomElement(adjectives)} ${getRandomElement(nouns)}`,
+        () => getRandomElement(tvShows),
+        () => getRandomElement(movies),
+        () => getRandomElement(randomNumbers),
+        () => `${getRandomElement(names)} ${getRandomElement(nouns)}`,
+        () => Math.floor(Math.random() * 9999999999).toString()
+      ];
+
+      return getRandomElement(contentTypes)();
+    }
+
+    // Populate boxes with random content on page load
+    window.addEventListener('load', function() {
+      // First row (boxes 1-4) will have static content
+      document.getElementById('box1').textContent = 'Static Box 1';
+      document.getElementById('box2').textContent = 'Static Box 2';
+      document.getElementById('box3').textContent = 'Static Box 3';
+      
+      // Second and third rows (boxes 5-8) will have dynamic content
+      for (let i = 4; i <= 8; i++) {
+        const box = document.getElementById(`box${i}`);
+        box.textContent = generateRandomContent();
+      }
+    });
+  </script>
+</body>
+</html>

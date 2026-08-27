@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>License System Release Notes</title>
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="doc">
+    <h1 class="doc-title">License System Release Notes</h1>
+    <p class="doc-meta">Version 3.6.0 | Last updated April 6, 2026</p>
+    <hr class="doc-rule">
+
+    <div class="intro">
+      These release notes describe the current status, validated platforms, and known issues for the Nimbus License System 3.6.0 release.
+    </div>
+
+    <h2>What's New</h2>
+    <div class="toc-item"><span class="toc-head">High-availability DLS clusters</span><p>Run two DLS instances as an active/active pair for resilient license serving.</p></div>
+    <div class="toc-item"><span class="toc-head">Token-based client auth</span><p>Clients can now lease licenses using short-lived tokens.</p></div>
+    <div class="toc-item"><span class="toc-head">Improved audit logging</span><p>Every lease and return is now recorded with a full audit trail.</p></div>
+
+    <h2>Validated Releases</h2>
+    <table>
+      <tr><th>Release</th><th>Date</th><th>Status</th><th>EOL Date</th></tr>
+      <tr><td>3.6.0</td><td>April 6, 2026</td><td>Current</td><td>-</td></tr>
+      <tr><td>3.5.1</td><td>Jan 15, 2026</td><td>Supported</td><td>-</td></tr>
+      <tr><td>3.1.6</td><td>Sep 2, 2025</td><td>Supported</td><td>-</td></tr>
+    </table>
+
+    <div class="note">
+      Note: Upgrading from a release earlier than 3.1.0 requires a fresh installation of the License Server.
+    </div>
+  </div>
+</body>
+</html>
