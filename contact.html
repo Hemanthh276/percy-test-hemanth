@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VisualCo — Home</title>
+  <title>VisualCo — Contact</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,12 +19,17 @@
   </header>
 
   <main class="content">
-    <section class="hero">
-      <h2>Ship pixel-perfect UI with confidence</h2>
-      <p>VisualCo catches visual regressions before they reach production, so your team reviews every change with certainty.</p>
-      <div class="hero-image"></div>
-      <button class="cta-button">Get Started</button>
-    </section>
+    <h2 class="page-title">Contact us</h2>
+    <p class="page-subtitle">We'd love to hear from you. Send us a message.</p>
+    <form class="form">
+      <label for="name">Name</label>
+      <input id="name" type="text" placeholder="Your name">
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="you@company.com">
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="How can we help?"></textarea>
+      <button class="cta-button" type="button" style="margin-top:20px;">Send Message</button>
+    </form>
   </main>
 
   <footer class="footer">© 2026 VisualCo. All rights reserved.</footer>

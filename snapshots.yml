@@ -1,30 +1,22 @@
-- name: 01 - Random Wikipedia article A
-  url: https://en.wikipedia.org/wiki/Special:Random
-  waitForTimeout: 4000
-- name: 02 - Random Wikipedia article B
-  url: https://en.wikipedia.org/wiki/Special:Random
-  waitForTimeout: 4000
-- name: 03 - Random Wikipedia article C
-  url: https://en.wikipedia.org/wiki/Special:Random
-  waitForTimeout: 4000
-- name: 04 - Dinner randomizer
-  url: https://www.whatthefuckshouldimakefordinner.com/
-  waitForTimeout: 4000
-- name: 05 - Lorem Picsum random image
-  url: https://picsum.photos/
-  waitForTimeout: 4000
-- name: 06 - Random dog
-  url: https://random.dog/
-  waitForTimeout: 5000
-- name: 07 - Random quote
-  url: https://quotes.toscrape.com/random
-  waitForTimeout: 3000
-- name: 08 - NASA Astronomy Picture of the Day
-  url: https://apod.nasa.gov/apod/astropix.html
-  waitForTimeout: 4000
-- name: 09 - World clock (live time)
-  url: https://www.timeanddate.com/worldclock/
-  waitForTimeout: 4000
-- name: 10 - LoremFlickr random image
-  url: https://loremflickr.com/800/600
-  waitForTimeout: 4000
+serve: .
+snapshots:
+  - name: Home
+    url: /index.html
+    widths:
+      - 1280
+  - name: Features
+    url: /features.html
+    widths:
+      - 1280
+  - name: Pricing
+    url: /pricing.html
+    widths:
+      - 1280
+  - name: About
+    url: /about.html
+    widths:
+      - 1280
+  - name: Contact
+    url: /contact.html
+    widths:
+      - 1280
