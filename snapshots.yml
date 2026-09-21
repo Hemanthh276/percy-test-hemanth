@@ -1,22 +1,14 @@
 serve: .
 snapshots:
-  - name: License Docs
-    url: /docs-license.html
-    widths:
-      - 1280
-  - name: DLS Docs
-    url: /docs-dls.html
-    widths:
-      - 1280
-  - name: Release Notes
-    url: /docs-releasenotes.html
+  - name: Home
+    url: /index.html
     widths:
       - 1280
   - name: Visual Testing Boxes
     url: /boxes.html
     widths:
       - 1280
-  - name: Home
-    url: /index.html
+  - name: License Docs
+    url: /docs-license.html
     widths:
       - 1280
