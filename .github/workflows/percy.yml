@@ -15,23 +15,37 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
       - name: Install dependencies
         run: npm install
-
       - name: Run Percy shard ${{ matrix.shard }}
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           PERCY_PARALLEL_TOTAL: "4"
           PERCY_PARALLEL_NONCE: "${{ github.run_id }}-${{ github.run_attempt }}"
         run: |
-          if [ "${{ matrix.shard }}" != "1" ]; then
-            echo "Shard ${{ matrix.shard }}: simulating a stalled/stopped CI job - exiting before sending snapshots"
+          if [ "${{ matrix.shard }}" = "1" ]; then
+            npm run percy
+          else
+            # Report-then-go-silent: this machine registers with the build and
+            # uploads snapshots, then is killed BEFORE finalize -> Percy sees a
+            # machine that stopped responding (needed for the R3 multi-machine state).
+            {
+              echo "serve: ."
+              echo "snapshots:"
+              for i in $(seq 1 400); do
+                echo "  - name: stall-${{ matrix.shard }}-$i"
+                echo "    url: /index.html"
+                echo "    widths: [1280]"
+              done
+            } > stall.yml
+            npx percy snapshot stall.yml &
+            PCT=$!
+            sleep 15
+            kill -9 $PCT 2>/dev/null || true
+            echo "Shard ${{ matrix.shard }}: reported then went silent (killed before finalize)"
             exit 1
           fi
-          npm run percy
