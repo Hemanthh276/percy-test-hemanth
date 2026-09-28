@@ -8,6 +8,10 @@ on:
 jobs:
   percy:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,7 +24,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Percy snapshots
-        run: npm run percy
+      - name: Run Percy shard ${{ matrix.shard }}
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_PARALLEL_TOTAL: "4"
+          PERCY_PARALLEL_NONCE: "${{ github.run_id }}-${{ github.run_attempt }}"
+        run: |
+          if [ "${{ matrix.shard }}" != "1" ]; then
+            echo "Shard ${{ matrix.shard }}: simulating a stalled/stopped CI job - exiting before sending snapshots"
+            exit 1
+          fi
+          npm run percy
